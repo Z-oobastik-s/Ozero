@@ -17,6 +17,7 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
     formats: ['image/avif', 'image/webp'],
+    unoptimized: true, // Необходимо для экспорта статичного сайта
   },
   webpack(config) {
     // Поддержка аудио-файлов
@@ -65,6 +66,10 @@ const nextConfig = {
     optimizeImages: true,
     scrollRestoration: true,
   },
+  // Для GitHub Pages
+  basePath: '/Ozero', // Имя репозитория
+  assetPrefix: '/Ozero/', // Необходимо для корректной загрузки ресурсов
+  trailingSlash: true,
 };
 
 // module.exports = withPWA(nextConfig);

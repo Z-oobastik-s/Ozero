@@ -9,7 +9,10 @@
 
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export', // Для статического экспорта
+  // При деплое на GitHub Pages включаем export
+  ...(process.env.GITHUB_ACTIONS && {
+    output: 'export',
+  }),
   images: {
     unoptimized: true, // Необходимо для экспорта статичного сайта
   },
@@ -35,8 +38,8 @@ const nextConfig = {
     return config;
   },
   // Для GitHub Pages
-  basePath: '/Ozero', // Имя репозитория
-  assetPrefix: '/Ozero/', // Необходимо для корректной загрузки ресурсов
+  basePath: process.env.NODE_ENV === 'production' ? '/Ozero' : '', // Имя репозитория только в продакшене
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/Ozero/' : '', // Необходимо для корректной загрузки ресурсов
   trailingSlash: true,
 };
 

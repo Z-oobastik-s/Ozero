@@ -3,45 +3,50 @@ module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
-    "./src/app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        primary: "#0066CC",
-        secondary: "#2C7BE5",
-        accent: "#FF9500",
-        dark: "#121212",
-        light: "#F9FAFB",
-        success: "#34D399",
-        warning: "#FBBF24",
-        danger: "#F87171",
+        primary: '#0066CC',
+        secondary: '#ff9900',
+        dark: '#1a202c',
+        light: '#f7fafc',
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
       },
-      screens: {
-        xs: "375px",
-        sm: "640px",
-        md: "768px",
-        lg: "1024px",
-        xl: "1280px",
-        "2xl": "1536px",
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1rem',
+          sm: '2rem',
+          lg: '4rem',
+          xl: '5rem',
+        },
       },
       animation: {
-        "pulse-slow": "pulse 3s infinite",
-        "bounce-slow": "bounce 3s infinite",
+        fadeIn: 'fadeIn 0.8s ease-out forwards',
+        slideUp: 'slideUp 0.8s ease-out forwards',
+        slideRight: 'slideRight 0.8s ease-out forwards',
+        bounce: 'bounce 1s infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        slideRight: {
+          '0%': { transform: 'translateX(-20px)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
       },
       boxShadow: {
-        'neu-light': '10px 10px 20px #d1d9e6, -10px -10px 20px #ffffff',
-        'neu-dark': '8px 8px 16px #0f0f0f, -8px -8px 16px #151515',
-      },
-      backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, var(--tw-gradient-stops))',
-      },
-      gradientColorStops: {
-        'gradient-primary-start': '#0066CC',
-        'gradient-primary-end': '#2C7BE5',
+        'custom': '0 4px 20px rgba(0, 0, 0, 0.1)',
+        'custom-lg': '0 10px 30px rgba(0, 0, 0, 0.15)',
       },
     },
   },

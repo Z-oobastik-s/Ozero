@@ -10,6 +10,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  output: 'export', // Добавляем output: 'export' для статического экспорта
   i18n: {
     locales: ['ru', 'uk', 'en'],
     defaultLocale: 'ru',

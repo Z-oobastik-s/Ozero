@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 
-const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
 
-  // Эффект для отслеживания скролла
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -19,62 +17,8 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Закрыть меню при изменении размера экрана
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsMenuOpen(false);
-      }
-    };
-    
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    setActiveSubmenu(null);
-  };
-
-  const toggleSubmenu = (submenu: string) => {
-    setActiveSubmenu(activeSubmenu === submenu ? null : submenu);
-  };
-
-  // Закрыть меню при клике вне его области
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      if (isMenuOpen && !target.closest('.mobile-menu') && !target.closest('.menu-button')) {
-        setIsMenuOpen(false);
-      }
-    };
-    
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, [isMenuOpen]);
-
-  // Translation placeholders
-  const t = (key: string) => {
-    const translations: Record<string, string> = {
-      'navigation.fishing': 'Рыбалка',
-      'navigation.accommodation': 'Отдых',
-      'navigation.cafe': 'Кафе',
-      'navigation.news': 'Новости',
-      'navigation.gallery': 'Галерея',
-      'navigation.contacts': 'Контакты',
-      'navigation.fishingSubmenu.vip': 'VIP-рыбалка',
-      'navigation.fishingSubmenu.instructor': 'Инструктор',
-      'navigation.fishingSubmenu.corporate': 'Корпоратив',
-      'navigation.fishingSubmenu.certificates': 'Сертификаты',
-      'navigation.fishingSubmenu.lakeMap': 'Схема озера',
-      'navigation.fishingSubmenu.prices': 'Цены',
-      'navigation.fishingSubmenu.rules': 'Правила',
-      'navigation.accommodationSubmenu.cabins': 'Домики',
-      'navigation.accommodationSubmenu.gazebo': 'Беседка',
-      'common.phone': 'Телефон',
-      'common.email': 'Email'
-    };
-    return translations[key] || key;
   };
 
   const menuItems = [

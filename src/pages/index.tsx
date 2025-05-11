@@ -5,7 +5,6 @@ import Link from 'next/link';
 
 const HomePage = () => {
   const [activeTab, setActiveTab] = useState('fishing');
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   // Translations
   const t = (key: string) => {

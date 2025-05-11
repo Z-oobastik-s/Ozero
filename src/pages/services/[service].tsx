@@ -62,7 +62,7 @@ const ServicePage = () => {
             <p className="text-lg">{currentService.description}</p>
           </div>
           
-          <p className="mb-8">Страница услуги "{currentService.title}" находится в разработке</p>
+          <p className="mb-8">Страница услуги &quot;{currentService.title}&quot; находится в разработке</p>
           
           <div className="flex flex-wrap gap-4">
             <Link href="/" className="btn-primary">

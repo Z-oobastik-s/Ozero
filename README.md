@@ -26,8 +26,8 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/Z-oobastik-s/Kosyan-Sergey.git
-   cd Kosyan-Sergey
+   git clone https://github.com/Z-oobastik-s/Ozero.git
+   cd Ozero
    ```
 
 2. Установите зависимости:
@@ -67,4 +67,32 @@ src/
 
 ## Лицензия
 
-© Озеро Михайлына 2021-2025. Все права защищены. 
+© Озеро Михайлына 2021-2025. Все права защищены.
+
+## Деплой
+
+### GitHub Pages
+
+Проект настроен для автоматического деплоя на GitHub Pages при пуше в ветку `main`.
+
+### Netlify (с поддержкой API)
+
+Для работы формы бронирования с отправкой в Telegram необходимо настроить проект на Netlify:
+
+1. Создать новый сайт на Netlify и связать его с этим репозиторием
+2. Добавить следующие переменные окружения в настройках сайта:
+   - `NETLIFY_SITE_ID` - ID вашего сайта на Netlify
+   - `NETLIFY_AUTH_TOKEN` - токен авторизации Netlify
+
+3. В секретах GitHub репозитория (Settings > Secrets and variables > Actions) также добавить:
+   - `NETLIFY_SITE_ID` - ID вашего сайта на Netlify
+   - `NETLIFY_AUTH_TOKEN` - токен авторизации Netlify
+
+4. После этого при каждом пуше в ветку `main` будет происходить деплой на Netlify с поддержкой API для формы бронирования.
+
+## Технологии
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Netlify Functions (для API) 

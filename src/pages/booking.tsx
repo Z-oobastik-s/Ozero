@@ -36,8 +36,13 @@ const BookingPage = () => {
         throw new Error('Пожалуйста, заполните все обязательные поля');
       }
 
+      // Адаптивный URL для API - использует Netlify Function в продакшене или локальный API в разработке
+      const apiUrl = process.env.NODE_ENV === 'production' 
+        ? '/.netlify/functions/sendBooking' 
+        : '/api/sendBooking';
+
       // Отправка данных в API
-      const response = await fetch('/api/sendBooking', {
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

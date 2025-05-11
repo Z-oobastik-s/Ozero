@@ -9,15 +9,8 @@
 
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-  output: 'export', // Добавляем output: 'export' для статического экспорта
-  i18n: {
-    locales: ['ru', 'uk', 'en'],
-    defaultLocale: 'ru',
-  },
+  output: 'export', // Для статического экспорта
   images: {
-    domains: ['localhost'],
-    formats: ['image/avif', 'image/webp'],
     unoptimized: true, // Необходимо для экспорта статичного сайта
   },
   webpack(config) {
@@ -40,32 +33,6 @@ const nextConfig = {
     });
 
     return config;
-  },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-        ],
-      },
-    ];
-  },
-  experimental: {
-    optimizeFonts: true,
-    optimizeImages: true,
-    scrollRestoration: true,
   },
   // Для GitHub Pages
   basePath: '/Ozero', // Имя репозитория

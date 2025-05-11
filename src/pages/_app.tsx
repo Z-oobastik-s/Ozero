@@ -1,26 +1,9 @@
-import React, { useEffect } from 'react';
-import { AppProps } from 'next/app';
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import Layout from '../components/layout/Layout';
-import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  // Check if the current page is the admin page
-  const isAdminPage = Component.displayName === 'AdminPanel';
-  
-  // Исправление проблемы с высотой вьюпорта на мобильных устройствах
-  useEffect(() => {
-    const setVh = () => {
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-    };
-    
-    setVh();
-    window.addEventListener('resize', setVh);
-    
-    return () => window.removeEventListener('resize', setVh);
-  }, []);
-
   return (
     <>
       <Head>
@@ -49,13 +32,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
       
-      {isAdminPage ? (
+      <Layout>
         <Component {...pageProps} />
-      ) : (
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      )}
+      </Layout>
     </>
   );
 }

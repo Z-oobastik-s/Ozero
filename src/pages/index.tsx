@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GetStaticProps } from 'next';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 
 const HomePage = () => {
   const [activeTab, setActiveTab] = useState('fishing');
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
-  // We'll use hardcoded text for now until translations are properly set up
+  // Translations
   const t = (key: string) => {
     const translations: Record<string, string> = {
       'homepage.title': 'Главная',
@@ -370,14 +367,6 @@ const HomePage = () => {
       </main>
     </React.Fragment>
   );
-};
-
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale || 'ru', ['common'])),
-    },
-  };
 };
 
 export default HomePage; 
